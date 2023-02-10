@@ -5,13 +5,13 @@ import json
 import requests
 from streamlit_lottie import st_lottie
 import logging
-
+import folium
 from aws_nexrad import get_files_from_nexrad_bucket, get_noaa_nexrad_url, copy_s3_nexrad_file, get_my_s3_url_nex, get_dir_from_filename_nexrad
 # from aws_nexrad import get_dir_from_filename_nexrad, get_files_from_nexrad_bucket, get_noaa_nexrad_url
 from nex_sql import fetch_data_from_table
 # from aws_geos import get_files_from_noaa_bucket, get_noaa_geos_url, copy_s3_file, get_my_s3_url, \
 #     get_dir_from_filename_geos
-
+from streamlit_folium import folium_static
 path = os.path.dirname(__file__)
 from dotenv import load_dotenv
 
@@ -135,7 +135,8 @@ my_s3_file_url = ""
 # empty_selection = all(map(bool, [selected_year_geos, selected_day_geos, selected_hour_geos])) #returns a bool on checking if all fields are empty
 
 if get_url_btn:
-    if ((selected_day_nexrad != "Select Hour") and (selected_month_nexrad != "Select Day") and (selected_year_nexrad != "Select Year")):
+    if((selected_year_nexrad != "Select Year") and (selected_month_nexrad != "Select Month") and (selected_day_nexrad != "Select Day") and (selected_station_nexrad != "Select station")):
+    # if ((selected_day_nexrad != "Select Hour") and (selected_month_nexrad != "Select Day") and (selected_year_nexrad != "Select Year")):
         src_bucket = "noaa-nexrad-level2"
         des_bucket = "damg7245-ass1"
         # copying user selected file from AWS s3 bucket to our bucket
@@ -148,7 +149,7 @@ if get_url_btn:
             st.markdown(f"[{text2}]({my_s3_file_url})", unsafe_allow_html=True)
             logging.info("URL has been generated")
     else:
-        st.markdown("Please select all fields!")
+        st.error("Please select all fields!")
 
 
 
@@ -191,12 +192,21 @@ if button_url:
 
 
 
-DATA_URL = ('nexrad1.csv')
+DATA_URL = ('nexrad.csv')
 @st.cache(persist=True)
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     # lowercase = lambda x:str(x).lower()
     return data
 data = load_data(10000)
-df = pd.DataFrame({'lat': data['LAT'],'lon':data['LON']})
-st.map(df)
+df = pd.DataFrame({'name': data['NAME'],'lat': data['LAT'],'lon':data['LON']})
+
+m = folium.Map(location=[20,0], tiles="OpenStreetMap", zoom_start=2)
+# st.map(df)
+for i in range(0,len(data)):
+   folium.Marker(
+      location=[df.iloc[i]['lat'], df.iloc[i]['lon']],
+      popup=df.iloc[i]['name'],
+   ).add_to(m)
+# st.markdown()
+folium_static(m)

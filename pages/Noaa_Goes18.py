@@ -53,7 +53,7 @@ with st.sidebar:
         key=None,
     )
 st.markdown("<h1 style='text-align: center'>Data Explorator</h1>",unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center'>GEOS</h2>",unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center'>GOES</h2>",unsafe_allow_html=True)
 selected_year_geos = ""
 selected_day_geos = ""
 selected_hour_geos = ""

@@ -47,7 +47,7 @@ Following are the stacks used to build this project
 
 <h3> Contribution </h3>
 
-1. Akash : 25%
+1. Aakash : 25%
 2. Bhakti : 25%
 3. Bhargavi : 25%
 4. Charu : 25%
