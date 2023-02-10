@@ -113,7 +113,9 @@ def return_list(dir_to_check_geos):
 
 #creating dir based on user input
 dir_to_check_nexrad = ""
-if (selected_day_nexrad != "Select Hour") and (selected_month_nexrad != "Select Day") and (selected_year_nexrad != "Select Year") and (selected_station_nexrad != "Select station"):
+if ((selected_year_nexrad != "Select Year") and (selected_month_nexrad != "Select Month") and (
+        selected_day_nexrad != "Select Day") and (selected_station_nexrad != "Select station")):
+# if (selected_day_nexrad != "Select Hour") and (selected_month_nexrad != "Select Day") and (selected_year_nexrad != "Select Year") and (selected_station_nexrad != "Select station"):
     dir_to_check_nexrad = f"{selected_year_nexrad}/{selected_month_nexrad}/{selected_day_nexrad}/{selected_station_nexrad}"
 # st.markdown(dir_to_check_nexrad)
 
