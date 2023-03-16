@@ -1,6 +1,8 @@
 # Assignment 1 - Exploration of GOES and NEXRAD Datasets
 
-User Guide - <a href="https://codelabs-preview.appspot.com/?file_id=1NZhfr8-otPaV6pyxBA2UvcESKmiMBFuhEO0d2omQReI#9">Assignment 1 - User Guide</a>
+User Guide - <a href="https://codelabs-preview.appspot.com/?file_id=1v2jj_bQJpwtmxfWo0UQGzHoUTUWs1IgEg0U8v_IYf_I#0">Assignment 1 - User Guide</a>
+
+Streamlit link - https://damg-7245-big-data-systems-team11-a1.streamlit.app/
 
 <h3> Problem Statement </h3>
 Build a data exploration tool for a Geospatial startup that leverages publically available data and allows data analysts to download it. GOES and NEXRAD satellite datasets are the main data sources available on the NOAA's (National Oceanic and Atmospheric Administration) website.
