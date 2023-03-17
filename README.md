@@ -45,7 +45,14 @@ Following are the stacks used to build this project
 ```
     pip install -r /path/to/requirements.txt
 ```
+6. Create .env file
 
+* AWS_ACCESS_KEY = 
+* AWS_SECRET_KEY = 
+7. Run the app using the command 
+```bash
+streamlit run Home.py
+```
 
 <h3> Contribution </h3>
 
